@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task 1</title>
+</head>
+<body>
+    <script>
+        function countVowel(str){
+          var vowel = ["а", "у", "о", "и", "э", "ы", "я", "ю", "е", "ё"];
+          var i = 0;
+          for (var indexLetter = 0; indexLetter < str.lenght; indexLetter++) {
+            var letter = str.charAt(indexLetter);
+            for (var indexVowel = 0; indexVowel < vowel.lenght; indexVowel++){
+              if (letter == vowel[indexVowel])
+                ++i;
+            }
+          }
+          return i;
+        }
+        var text = prompt ("Введите текст");
+        console.log (countVowel(text));    
+      </script>
+</body>
+</html>
