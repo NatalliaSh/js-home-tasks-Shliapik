@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+<body>
+    <script>
+        //функции проверок
+        function correctNumb(number) {
+          var age = parseInt(number);
+          while(isNaN(age)){
+            number = prompt("Ваш возраст введен некорректно.\nВведите ваш возраст в годах используя символы от 0 до 9");
+            age = parseInt(number);
+          }
+          return age;
+        }
+    
+        function correctText(text) {
+          while (!Boolean(text) || !isNaN(text)){
+          text = prompt("Данные введены некорректно.\nВведите данные используя текстовые символы");
+        }
+          return text;
+        }
+ 
+        
+        var familyName = prompt("Введите вашу фамилию");
+        var familyNameCorrect = correctText(familyName);
+        
+        var name = prompt("Введите ваше имя");
+        var nameCorrect = correctText(name);
+        
+        var surname = prompt("Введите ваше отчество");
+        var surnameCorrect = correctText(surname);
+        
+        var ageStr = prompt("Введите ваш возраст в годах");
+        var age = correctNumb(ageStr) ;
+        
+        var isSex=confirm("Ваш пол - мужской?\nЕсли да - нажмите 'ок', если нет - 'отмена'");
+        var sex;   
+        var pension;
+        if (isSex) {
+          sex = "мужской";
+          if (age >= 63) {
+            pension = "да";
+          } else pension = "нет";
+        } else {
+          sex = "женский";
+          if (age >= 58) {
+            pension = "да";
+          } else pension = "нет";
+        }
+        alert('ваше ФИО: ' + familyNameCorrect + ' ' + nameCorrect + ' ' + surnameCorrect + 
+              '\nваш возраст в годах: ' + age + 
+              '\nваш возраст в днях: ' + age * 365 +  
+              '\nчерез 5 лет вам будет: ' + (age + 5) + 
+              '\nваш пол: ' + sex + '\n' +
+              'вы на пенсии: ' + pension);
+    </script>
+</body>
+</html>
