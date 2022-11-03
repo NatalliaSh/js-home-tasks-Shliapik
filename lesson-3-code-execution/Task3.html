@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson_3 Task_3</title>
+</head>
+<body>
+    <script>
+        'use strict'
+        var numbers = [];
+        var count = 0;
+        var a = prompt("Введите число, которое хотите прибавить. \n" + 
+                        "Для завершения сложения нажмите 'отмена' ");
+
+        while ( isFinite(a) && a !== null && a !== "" ) {
+            numbers.push(a);
+            a = prompt("Введите число, которое хотите прибавить. \n" + 
+                        "Для завершения сложения нажмите 'отмена' ");     
+        }
+
+        for (var i = 0; i < numbers.length; i++) {
+            count += Number(numbers[i]);
+        }
+
+        console.log(count);  
+
+    </script>
+</body>
+</html>
