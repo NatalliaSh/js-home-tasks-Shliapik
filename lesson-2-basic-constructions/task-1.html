@@ -8,20 +8,48 @@
 </head>
 <body>
     <script>
-        function countVowel(str){
-          var vowel = ["а", "у", "о", "и", "э", "ы", "я", "ю", "е", "ё"];
-          var i = 0;
-          for (var indexLetter = 0; indexLetter < str.lenght; indexLetter++) {
-            var letter = str.charAt(indexLetter);
-            for (var indexVowel = 0; indexVowel < vowel.lenght; indexVowel++){
-              if (letter == vowel[indexVowel])
-                ++i;
-            }
+      "use strict"
+      /* Не понимаю почему не работает, вроде по логике все верно
+      function countVowel(str) {
+        var vowel = ["а", "у", "о", "и", "э", "ы", "я", "ю", "е", "ё"];
+        var i = 0;
+
+        for (var indexLetter = 0; indexLetter < str.lenght; indexLetter++) {
+          var letter = str[indexLetter];
+          for (var indexVowel = 0; indexVowel < vowel.lenght; indexVowel++){
+            if (letter !== vowel[indexVowel]) continue;
+            i++;
           }
-          return i;
         }
-        var text = prompt ("Введите текст");
-        console.log (countVowel(text));    
-      </script>
+
+        return i;
+      }
+
+      var text = prompt ("Введите текст");
+      console.log (countVowel(text));    
+      */
+
+      //Это сделано по образу и подобию разбора дз на уроке, но все равно не считает
+      //не могу понять почему
+      function countVowel(str) {
+        var vowel = { "а":true, "у":true, "о":true, "и":true, "э":true, "ы":true, "я":true,
+                      "ю":true, "е":true, "ё":true };
+        var strLow = str.toLowerCase();
+        var count = 0;
+
+        for (var i = 0; i < strLow.lenght; i++) {
+          var letter = strLow.charAt(i);
+          if (letter in vowel) {
+            count++;
+          }          
+        }
+
+        console.log (count);
+      }
+
+      var text = prompt ("Введите текст");
+      countVowel(text);      
+
+    </script>
 </body>
 </html>
