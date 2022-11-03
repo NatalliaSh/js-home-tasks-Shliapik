@@ -8,6 +8,7 @@
 </head>
 <body>
     <script>
+      "use strict"
         //функции проверок
         function correctNumb(number) {
           var age = parseInt(number);
@@ -41,6 +42,7 @@
         var isSex=confirm("Ваш пол - мужской?\nЕсли да - нажмите 'ок', если нет - 'отмена'");
         var sex;   
         var pension;
+
         if (isSex) {
           sex = "мужской";
           if (age >= 63) {
@@ -52,12 +54,14 @@
             pension = "да";
           } else pension = "нет";
         }
+
         alert('ваше ФИО: ' + familyNameCorrect + ' ' + nameCorrect + ' ' + surnameCorrect + 
               '\nваш возраст в годах: ' + age + 
               '\nваш возраст в днях: ' + age * 365 +  
               '\nчерез 5 лет вам будет: ' + (age + 5) + 
               '\nваш пол: ' + sex + '\n' +
               'вы на пенсии: ' + pension);
+              
     </script>
 </body>
 </html>
