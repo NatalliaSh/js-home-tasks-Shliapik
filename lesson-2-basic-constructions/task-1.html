@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task 1</title>
+</head>
+<body>
+    <script>
+      "use strict"
+      /* Была ошибка в слове length , исправила, все заработало. Поэтому для проверки оставляю 
+      свой первоначальный подправленный код, а подсмотренное решение на уроке - закомментировала*/
+      function countVowel(str) {
+        var vowel = ["а", "у", "о", "и", "э", "ы", "я", "ю", "е", "ё"];
+        var i = 0;
+
+        for (var indexLetter = 0; indexLetter < str.length; indexLetter++) {
+          var letter = str[indexLetter];
+          for (var indexVowel = 0; indexVowel < vowel.length; indexVowel++){
+            if (letter !== vowel[indexVowel]) continue;
+            i++;
+          }
+        }
+
+        return i;
+      }
+
+      var text = prompt ("Введите текст");
+      console.log (countVowel(text));    
+      
+
+      //Это сделано по образу и подобию разбора дз на уроке
+      /*function countVowel(str) {
+        var vowel = { "а":true, "у":true, "о":true, "и":true, "э":true, "ы":true, "я":true,
+                      "ю":true, "е":true, "ё":true };
+        var strLow = str.toLowerCase();
+        var count = 0;
+
+        for (var i = 0; i < strLow.length; i++) {
+          var letter = strLow.charAt(i);
+          if (letter in vowel) {
+            count++;
+          }          
+        }
+
+        console.log (count);
+      }
+
+      var text = prompt ("Введите текст");
+      countVowel(text);      */
+
+    </script>
+</body>
+</html>
