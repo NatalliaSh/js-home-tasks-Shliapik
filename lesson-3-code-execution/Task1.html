@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3 Task 1</title>
+</head>
+<body>
+    <script>
+        "use strict"
+        /*Здесь все работает, но вот если сделать все не через вызов функции, а просто шаг
+         за шагом в основном коде, то тоже самое не работает. Ключи хэша не хотят добавляться 
+         в новый массив, посмотрите пожалуйста закоменченный код ниже. Не понимаю почему так 
+         происходит*/
+
+            function whoIsWin(hesh) {
+            var name = [];
+            var taskNumber = [];
+        
+            for ( var key in hesh ) {
+            name.push(key);
+            taskNumber.push(hesh[key]);
+           }
+
+            var nameWin = name[0];
+            var taskNumberWin = taskNumber[0];
+
+            for ( var i = 1; i < taskNumber.length; i++ ) {
+                var number = taskNumber[i];
+                if ( number > taskNumberWin ) {
+                    taskNumberWin = taskNumber[i];
+                    nameWin = name[i];
+                }
+            }
+
+            console.log ( 'Больше всех задач выполнил ' + nameWin + '. Выполнено ' + taskNumberWin +
+                    ' задач' );
+        }
+
+        var tasksCompleted = {
+            'Anna':29,
+            'Serg':35,
+            'Elena':1,
+            'Anton':99
+        };
+
+        whoIsWin(tasksCompleted);
+
+        /*var tasksCompleted = {
+            'Anna':29,
+            'Serg':35,
+            'Elena':1,
+            'Anton':99
+        };
+
+        var name = [];
+        var taskNumber = [];
+        
+        for ( var key in tasksCompleted ) {
+            //вот тут выдает ошибку TypeError: name.push is not a function
+            //at Task1.html:56:18
+            //при этом, если сделать без push, а через индексы, то именно с внесением в массив
+            //ключей key, выдает ошибку типа не может 0 преобразовать в String, хотя если 
+            //перебрать весь хеш и вывести в консоль тип ключей, то дает, что там strihg
+            
+            name.push(key); //если это закоментить, то все работает,но без имени тогда
+            taskNumber.push(tasksCompleted[key]);
+           }
+
+        var nameWin = name[0];
+        var taskNumberWin = taskNumber[0];
+
+        for ( var i = 1; i < taskNumber.length; i++ ) {
+            var number = taskNumber[i];
+            if ( number > taskNumberWin ) {
+                taskNumberWin = taskNumber[i];
+                nameWin = name[i];
+            }
+        }
+
+        console.log ( 'Больше всех задач выполнил ' + nameWin + '. Выполнено ' + taskNumberWin +
+                    ' задач' );*/
+
+    </script>
+    
+
+</body>
+</html>
