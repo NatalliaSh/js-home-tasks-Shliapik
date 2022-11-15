@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      'use strict';
+      function getLattice(line, rows) {
+        var arrOdd = [];
+        var arrEven = [];
+
+        for (var i = 0; i < line; i++) {
+          if (i % 2 == 0) {
+            arrOdd[i] = '#';
+            arrEven[i] = ' ';
+          } else {
+            arrOdd[i] = ' ';
+            arrEven[i] = '#';
+          }
+        }
+
+        var str = '';
+
+        for (var i = 1; i <= rows; i++) {
+          str += i % 2 == 0 ? arrEven.join('') + '\n' : arrOdd.join('') + '\n';
+          //использую плагин Prettier и вот в выражении выше, я бы заключила в скобки часть-условие тернарного ператора и выражения для true и false. Мне кажется, что так более читаемый код. Но Prettier мне убирает мои скобки, может вы знаете как эту функцию отключить? Сама не нашла
+        }
+
+        return str;
+      }
+
+      console.log(getLattice(8, 8));
+
+      /*Решение, когда ряды одинаковые
+      function getLattice(line, rows) {
+        var arr = [];
+        arr.length = line * rows;
+
+        for (var i = 0; i < arr.length; i++) {
+          arr[i] = i % 2 == 0 ? "#" : " ";
+        }
+
+        for (var i = line; i < arr.length; i += line + 1) {
+          arr.splice(i, 0, "\n");
+        }
+
+        return arr.join("");
+      }
+
+      console.log(getLattice(8, 3));*/
+    </script>
+  </body>
+</html>

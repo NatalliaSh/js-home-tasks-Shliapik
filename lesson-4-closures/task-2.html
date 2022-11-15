@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      'use strict';
+      function deleteClass(obj, cls) {
+        obj.className = obj.className.split(' ' + cls).join(''); //cls в середине строки
+        obj.className = obj.className.split(cls).join('').trim(); //cls в самом начале строки
+
+        return obj;
+      }
+
+      var obj = {
+        className: 'menu open menu menu menu menu free',
+      };
+
+      console.log(deleteClass(obj, 'menu'));
+
+      /*var classToDelete = prompt('Введите класс, который хотите удалить');
+
+      console.log(deleteClass(obj, classToDelete.toLowerCase()));*/
+    </script>
+  </body>
+</html>
