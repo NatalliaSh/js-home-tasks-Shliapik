@@ -9,7 +9,179 @@
   <body>
     <script>
       'use strict';
+
       var firstMan = {
+        name: 'John',
+        billValues: [124, 48, 268, 180, 42],
+        calcTip: function () {
+          this.allTips = [];
+          this.finalPaidAmounts = [];
+
+          for (var i = 0; i < this.billValues.length; i++) {
+            if (this.billValues[i] < 50) {
+              this.allTips[i] =
+                Math.round(0.2 * this.billValues[i] * 100) / 100;
+            } else if (this.billValues[i] >= 50 && this.billValues[i] <= 200) {
+              this.allTips[i] =
+                Math.round(0.15 * this.billValues[i] * 100) / 100;
+            } else {
+              this.allTips[i] =
+                Math.round(0.1 * this.billValues[i] * 100) / 100;
+            }
+            this.finalPaidAmounts[i] = this.billValues[i] + this.allTips[i];
+          }
+        },
+      };
+
+      firstMan.calcTip();
+      console.log(firstMan.allTips + '...' + firstMan.finalPaidAmounts);
+
+      var secondMan = {
+        name: 'Mark',
+        billValues: [77, 375, 110, 45],
+        calcTip: function () {
+          this.allTips = [];
+          this.finalPaidAmounts = [];
+
+          for (var i = 0; i < this.billValues.length; i++) {
+            if (this.billValues[i] < 100) {
+              this.allTips[i] =
+                Math.round(0.2 * this.billValues[i] * 100) / 100;
+            } else if (this.billValues[i] >= 100 && this.billValues[i] <= 300) {
+              this.allTips[i] =
+                Math.round(0.1 * this.billValues[i] * 100) / 100;
+            } else {
+              this.allTips[i] =
+                Math.round(0.25 * this.billValues[i] * 100) / 100;
+            }
+            this.finalPaidAmounts[i] = this.billValues[i] + this.allTips[i];
+          }
+        },
+      };
+
+      secondMan.calcTip();
+      console.log(secondMan.allTips + '...' + secondMan.finalPaidAmounts);
+
+      function calcAverageTip(tipsArr) {
+        var count = 0;
+
+        for (var i = 0; i < tipsArr.length; i++) {
+          count += tipsArr[i];
+        }
+
+        return count / tipsArr.length;
+      }
+
+      firstMan.averageTip = calcAverageTip(firstMan.allTips);
+      secondMan.averageTip = calcAverageTip(secondMan.allTips);
+      console.log(firstMan, secondMan);
+
+      console.log(firstMan.averageTip);
+      console.log(secondMan.averageTip);
+
+      if (firstMan.averageTip > secondMan.averageTip) {
+        console.log(
+          firstMan.name +
+            "'s family paid the highest tips on average. \n" +
+            'The sum of the everage tip is ' +
+            firstMan.averageTip +
+            '$',
+        );
+      } else if (firstMan.averageTip < secondMan.averageTip) {
+        console.log(
+          secondMan.name +
+            "'s family paid the highest tips on average. \n" +
+            'The sum of the everage tip is ' +
+            secondMan.averageTip +
+            '$',
+        );
+      } else {
+        console.log(
+          'All families paid the same tips on average. \n' +
+            'The sum of the everage tip is ' +
+            secondMan.averageTip +
+            '$',
+        );
+      }
+
+      /*вариант с call/apply если бы подсчет был одинаков*/
+      /*var firstMan = {
+        name: 'John',
+        billValues: [124, 48, 268, 180, 42],
+        calcTip: function () {
+          this.allTips = [];
+          this.finalPaidAmounts = [];
+
+          for (var i = 0; i < this.billValues.length; i++) {
+            if (this.billValues[i] < 50) {
+              this.allTips[i] =
+                Math.round(0.2 * this.billValues[i] * 100) / 100;
+            } else if (this.billValues[i] >= 50 && this.billValues[i] <= 200) {
+              this.allTips[i] =
+                Math.round(0.15 * this.billValues[i] * 100) / 100;
+            } else {
+              this.allTips[i] =
+                Math.round(0.1 * this.billValues[i] * 100) / 100;
+            }
+            this.finalPaidAmounts[i] = this.billValues[i] + this.allTips[i];
+          }
+        },
+      };
+
+      firstMan.calcTip();
+      console.log(firstMan.allTips + '...' + firstMan.finalPaidAmounts);
+
+      var secondMan = {
+        name: 'Mark',
+        billValues: [77, 375, 110, 45],
+      };
+
+      firstMan.calcTip.call(secondMan);
+      console.log(secondMan.allTips + '...' + secondMan.finalPaidAmounts);
+
+      function calcAverageTip(tipsArr) {
+        var count = 0;
+
+        for (var i = 0; i < tipsArr.length; i++) {
+          count += tipsArr[i];
+        }
+
+        return count / tipsArr.length;
+      }
+
+      firstMan.averageTip = calcAverageTip(firstMan.allTips);
+      secondMan.averageTip = calcAverageTip(secondMan.allTips);
+
+      console.log(firstMan.averageTip);
+      console.log(secondMan.averageTip);
+
+      if (firstMan.averageTip > secondMan.averageTip) {
+        console.log(
+          firstMan.name +
+            "'s family paid the highest tips on average. \n" +
+            'The sum of the everage tip is ' +
+            firstMan.averageTip +
+            '$',
+        );
+      } else if (firstMan.averageTip < secondMan.averageTip) {
+        console.log(
+          secondMan.name +
+            "'s family paid the highest tips on average. \n" +
+            'The sum of the everage tip is ' +
+            secondMan.averageTip +
+            '$',
+        );
+      } else {
+        console.log(
+          'All families paid the same tips on average. \n' +
+            'The sum of the everage tip is ' +
+            secondMan.averageTip +
+            '$',
+        );
+      }
+
+      /*первый вариант
+        var firstMan = {
         name: 'John',
         billValues: [124, 48, 268, 180, 42],
         calcTip: function () {
@@ -79,7 +251,7 @@
       /*console.log(firstMan.averageTip);
       console.log(secondMan.averageTip);*/
 
-      if (firstMan.averageTip > secondMan.averageTip) {
+      /*if (firstMan.averageTip > secondMan.averageTip) {
         console.log(
           firstMan.name +
             "'s family paid the highest tips on average. \n" +
@@ -102,7 +274,7 @@
             secondMan.averageTip +
             '$',
         );
-      }
+      }*/
     </script>
   </body>
 </html>
