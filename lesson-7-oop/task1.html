@@ -13,20 +13,22 @@
         this.quest = quest;
         this.answers = answers;
         this.correctAnswer = numbOfCorrectAnswer;
-        this.askQuestion = function () {
-          return this.quest + '\n' + this.answers.join('\n');
-        };
-        this.checkAnswer = function (numberOfAnswer) {
-          if (numberOfAnswer == this.correctAnswer) {
-            return "It's a correct answer";
-          } else {
-            return (
-              'Unfortunately, you are wrong. The correct answer is ' +
-              this.answers[this.correctAnswer - 1]
-            );
-          }
-        };
       }
+
+      Question.prototype.askQuestion = function () {
+        return this.quest + '\n' + this.answers.join('\n');
+      };
+
+      Question.prototype.checkAnswer = function (numberOfAnswer) {
+        if (numberOfAnswer == this.correctAnswer) {
+          return "It's a correct answer";
+        } else {
+          return (
+            'Unfortunately, you are wrong. The correct answer is ' +
+            this.answers[this.correctAnswer - 1]
+          );
+        }
+      };
 
       var question1 = new Question(
         'Who developed Java Script?',
