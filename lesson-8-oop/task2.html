@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      'use strict';
+      function isPal(text) {
+        var word = String(text).toLowerCase().trim().split(' ').join('');
+        var reverseWord = word.split('').reverse().join('');
+        //console.log(word + '---' + reverseWord);
+        return word === reverseWord;
+      }
+
+      console.log(isPal('Anna')); // true
+      console.log(isPal('  А роза упала на лапу Азора')); //true
+      console.log(isPal('Вася')); //false
+      console.log(isPal('12321')); //true
+      console.log(isPal('123212')); //false
+    </script>
+  </body>
+</html>
