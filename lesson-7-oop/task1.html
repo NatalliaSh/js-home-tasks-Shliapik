@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      'use strict';
+      (function () {
+        function Question(quest, answers, numbOfCorrectAnswer) {
+          this.quest = quest;
+          this.answers = answers;
+          this.correctAnswer = numbOfCorrectAnswer;
+        }
+
+        Question.prototype.askQuestion = function () {
+          return this.quest + '\n' + this.answers.join('\n');
+        };
+
+        Question.prototype.checkAnswer = function (numberOfAnswer) {
+          if (numberOfAnswer == this.correctAnswer) {
+            return "It's a correct answer";
+          } else {
+            return (
+              'Unfortunately, you are wrong. The correct answer is ' +
+              this.answers[this.correctAnswer - 1]
+            );
+          }
+        };
+
+        var question1 = new Question(
+          'Who developed Java Script?',
+          [
+            '1. Bill Gates',
+            '2. Guido van Rossum',
+            '3. Brendan Eich',
+            '4. James Gosling',
+          ],
+          3,
+        );
+
+        var question2 = new Question(
+          'In which company Javascript has been developed?',
+          [
+            '1. Google',
+            '2. Netscape 2',
+            '3. Oracle Corporation',
+            '4. Microsoft',
+          ],
+          2,
+        );
+
+        var question3 = new Question(
+          'Who is the current owner of the official implementation of the Javascript?',
+          [
+            '1. Microsoft',
+            '2. Netscape 2',
+            '3. Mozilla',
+            '4. Oracle Corporation',
+          ],
+          4,
+        );
+
+        var quiz = [question1, question2, question3];
+
+        function randomDiap(min, max) {
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        var i = randomDiap(0, quiz.length - 1);
+
+        console.log(quiz[i].askQuestion());
+        var userAnswer = prompt(
+          'Please, write the number of the correct answer',
+        );
+        console.log(quiz[i].checkAnswer(userAnswer));
+      })();
+    </script>
+  </body>
+</html>
